@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace CW_Sharp_Delegate1
 {
     public delegate void Delegate(string message);
+    public delegate void Delegate2(int f, int s);
     class StringForDelegate
     {
         public void toRed(string message)
@@ -30,6 +31,21 @@ namespace CW_Sharp_Delegate1
             Console.WriteLine(message);
         }
     }
+    class Numbers
+    {
+        public void sum(int f, int s)
+        {
+            Console.WriteLine(f + s);
+        }
+        public void subt(int f, int s)
+        {
+            Console.WriteLine(f - s);
+        }
+        public void mult(int f, int s)
+        {
+            Console.WriteLine(f * s);
+        }
+    }
     internal class Program
     {
         static void Main(string[] args)
@@ -40,6 +56,11 @@ namespace CW_Sharp_Delegate1
             deleg += test.toBlue;
             deleg += test.toStandart;
             deleg("Testing");
+            Numbers num = new Numbers();
+            Delegate2 deleg2 = num.sum;
+            deleg2 += num.subt;
+            deleg2 += num.mult;
+            deleg2(10, 2);
         }
     }
 }
